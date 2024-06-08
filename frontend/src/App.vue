@@ -1,10 +1,8 @@
 <script setup>
-import {ref} from 'vue';
-import Home from "./views/Home.vue";
-import HelloWorld from "./components/HelloWorld.vue";
-import Book from "./views/Book.vue";
 
-const selectedKeys = ref(['2']);
+import {ref} from 'vue';
+
+const selectedKeys = ref(['1']);
 </script>
 
 <template>
@@ -17,11 +15,15 @@ const selectedKeys = ref(['2']);
           theme="dark"
           mode="horizontal"
           :style="{lineHeight: '60px'}">
-        <a-menu-item key="1">
-          <router-link to="/"><a>首页</a></router-link>
+        <a-menu-item key="1" @click="goToHome">首页
+<!--
+          <router-link to="/">首页</router-link>
+-->
         </a-menu-item>
-        <a-menu-item key="2">
-          <router-link to="/book"><a> 列表</a></router-link>
+        <a-menu-item key="2" @click="goToBookList">列表
+<!--
+          <router-link to="/book">列表</router-link>
+-->
         </a-menu-item>
       </a-menu>
     </a-layout-header>
@@ -47,6 +49,24 @@ const selectedKeys = ref(['2']);
     </a-layout-footer>
   </a-layout>
 </template>
+<script>
+
+export default {
+  name: "App",
+  methods: {
+    goToHome() {
+      console.log("click goToHome!")
+      this.$router.push("/");
+    },
+    goToBookList() {
+      console.log("click goToBookList!")
+      this.$router.push("/book");
+
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 .site-layout-content {
